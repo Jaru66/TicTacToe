@@ -18,6 +18,7 @@ public class Game {
         //check if there is 3 in a row for either player and AI
     }
     static void askForMove(){
+        updateIndexes();
         System.out.println(Field.defaultField);
         System.out.println("Wpisz numer w który chcesz wstawić X: ");
         checkIfSelectedFieldIsEmpty(scanner.nextInt());
@@ -30,17 +31,9 @@ public class Game {
 
     private static void checkIfSelectedFieldIsEmpty(int Selected) {
 
-        AI.OIndexes.clear();
-        AI.XIndexes.clear();
 
-        for (int i=1;i<=9;i++)
-        {
-            System.out.println(Field.defaultField.charAt(  Integer.parseInt(   Field.numberOfFieldIndex[i] )  ));
-            if (Field.defaultField.charAt(  Integer.parseInt(   Field.numberOfFieldIndex[i] )  )=='X')     {
-                AI.XIndexes.add(Integer.toString(i));}
-            if (Field.defaultField.charAt(  Integer.parseInt(   Field.numberOfFieldIndex[i])  )=='O')     {
-                AI.OIndexes.add(Integer.toString(i));}
-        }
+        updateIndexes();
+
 
         System.out.println("Wielkosc listy X,O :"+AI.XIndexes.size() + ", " + AI.OIndexes.size());
         System.out.println("XIndexes:");
@@ -71,12 +64,26 @@ public class Game {
                 System.out.println("Pole jest zajete!");askForMove();
             } else {
                // System.out.println(Integer.toString(Selected));
-                System.out.println("O:"+i+AI.OIndexes.get(i));
-                System.out.println("Wolne "); Field.update(Selected,true);            }
+
+                 Field.update(Selected,true);            }
 
             i++;
         }while(i<AI.OIndexes.size());
 
+    }
+
+    public static void updateIndexes() {
+        AI.OIndexes.clear();
+        AI.XIndexes.clear();
+
+        for (int i=1;i<=9;i++)
+        {
+            System.out.println(Field.defaultField.charAt(  Integer.parseInt(   Field.numberOfFieldIndex[i] )  ));
+            if (Field.defaultField.charAt(  Integer.parseInt(   Field.numberOfFieldIndex[i] )  )=='X')     {
+                AI.XIndexes.add(Integer.toString(i));}
+            if (Field.defaultField.charAt(  Integer.parseInt(   Field.numberOfFieldIndex[i])  )=='O')     {
+                AI.OIndexes.add(Integer.toString(i));}
+        }
     }
 
     static void checkForThreeInARow()
