@@ -35,11 +35,11 @@ public class Game {
         updateIndexes();
 
 
-        System.out.println("Wielkosc listy X,O :"+AI.XIndexes.size() + ", " + AI.OIndexes.size());
-        System.out.println("XIndexes:");
-        System.out.println(AI.XIndexes);
-        System.out.println("OIndexes:");
-        System.out.println(AI.OIndexes);
+//        System.out.println("Wielkosc listy X,O :"+AI.XIndexes.size() + ", " + AI.OIndexes.size());
+//        System.out.println("XIndexes:");
+//        System.out.println(AI.XIndexes);
+//        System.out.println("OIndexes:");
+//        System.out.println(AI.OIndexes);
 
         int i=0;
         do{
@@ -48,9 +48,9 @@ public class Game {
             else if (Integer.toString(Selected).contains(AI.XIndexes.get(i))) {
                 System.out.println("Pole jest zajete!");askForMove();
             } else {
-                System.out.println(Integer.toString(Selected));
-                System.out.println("X:"+i+AI.XIndexes.get(i));
-                System.out.println("Wolne "); Field.update(Selected,true);            }
+                //ystem.out.println(Integer.toString(Selected));
+                //System.out.println("X:"+i+AI.XIndexes.get(i));
+                 Field.update(Selected,true);            }
 
         i++;
         }while(i<AI.XIndexes.size());
@@ -78,7 +78,7 @@ public class Game {
 
         for (int i=1;i<=9;i++)
         {
-            System.out.println(Field.defaultField.charAt(  Integer.parseInt(   Field.numberOfFieldIndex[i] )  ));
+            //System.out.println(Field.defaultField.charAt(  Integer.parseInt(   Field.numberOfFieldIndex[i] )  ));
             if (Field.defaultField.charAt(  Integer.parseInt(   Field.numberOfFieldIndex[i] )  )=='X')     {
                 AI.XIndexes.add(Integer.toString(i));}
             if (Field.defaultField.charAt(  Integer.parseInt(   Field.numberOfFieldIndex[i])  )=='O')     {
@@ -95,11 +95,22 @@ public class Game {
         if (((Field.defaultField.charAt(2)=='X')&&Field.defaultField.charAt(37)=='X')&&Field.defaultField.charAt(71)=='X'){gameOver("X");}
         if (((Field.defaultField.charAt(60)=='X')&&Field.defaultField.charAt(37)=='X')&&Field.defaultField.charAt(13)=='X'){gameOver("X");}
 
+        if (((Field.defaultField.charAt(2)=='X')&&Field.defaultField.charAt(31)=='X')&&Field.defaultField.charAt(60)=='X'){gameOver("X");}
+        if (((Field.defaultField.charAt(8)=='X')&&Field.defaultField.charAt(37)=='X')&&Field.defaultField.charAt(66)=='X'){gameOver("X");}
+        if (((Field.defaultField.charAt(13)=='X')&&Field.defaultField.charAt(42)=='X')&&Field.defaultField.charAt(71)=='X'){gameOver("X");}
+
+
+
+
         if (((Field.defaultField.charAt(2)=='O')&&Field.defaultField.charAt(8)=='O')&&Field.defaultField.charAt(13)=='O'){gameOver("O");}
         if (((Field.defaultField.charAt(31)=='O')&&Field.defaultField.charAt(37)=='O')&&Field.defaultField.charAt(42)=='O'){gameOver("O");}
         if (((Field.defaultField.charAt(60)=='O')&&Field.defaultField.charAt(66)=='O')&&Field.defaultField.charAt(71)=='O'){gameOver("O");}
         if (((Field.defaultField.charAt(2)=='O')&&Field.defaultField.charAt(37)=='O')&&Field.defaultField.charAt(71)=='O'){gameOver("O");}
         if (((Field.defaultField.charAt(60)=='O')&&Field.defaultField.charAt(37)=='O')&&Field.defaultField.charAt(13)=='O'){gameOver("O");}
+
+        if (((Field.defaultField.charAt(2)=='O')&&Field.defaultField.charAt(31)=='O')&&Field.defaultField.charAt(60)=='O'){gameOver("O");}
+        if (((Field.defaultField.charAt(8)=='O')&&Field.defaultField.charAt(37)=='O')&&Field.defaultField.charAt(66)=='O'){gameOver("O");}
+        if (((Field.defaultField.charAt(13)=='O')&&Field.defaultField.charAt(42)=='O')&&Field.defaultField.charAt(71)=='O'){gameOver("O");}
 
         checkForFreeSpace();
     }
@@ -129,6 +140,6 @@ public class Game {
                 " 4  |  5  | 6\n" +
                 "----|-----|---\n" +
                 " 7  |  8  | 9";
-        System.out.println(Field.defaultField);
+       // System.out.println(Field.defaultField);
     }
 }
