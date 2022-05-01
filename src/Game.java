@@ -10,8 +10,6 @@ public class Game {
     static void start(){
         Field.putNumberOfFieldIndexIntoList();
 
-        System.out.println(Field.defaultField);
-
         askForMove();
         //random start
 
@@ -20,7 +18,7 @@ public class Game {
         //check if there is 3 in a row for either player and AI
     }
     static void askForMove(){
-
+        System.out.println(Field.defaultField);
         System.out.println("Wpisz numer w który chcesz wstawić X: ");
         checkIfSelectedFieldIsEmpty(scanner.nextInt());
 
@@ -37,10 +35,11 @@ public class Game {
 
         for (int i=1;i<=9;i++)
         {
-            if (Field.defaultField.charAt(  Integer.parseInt(   Field.numberOfFieldIndex[i] )   )=='X')     {
-                AI.XIndexes.add(Field.numberOfFieldIndex[i]);}
-            if (Field.defaultField.charAt(  Integer.parseInt(   Field.numberOfFieldIndex[i] )   )=='O')     {
-                AI.OIndexes.add(Field.numberOfFieldIndex[i]);}
+            System.out.println(Field.defaultField.charAt(  Integer.parseInt(   Field.numberOfFieldIndex[i] )  ));
+            if (Field.defaultField.charAt(  Integer.parseInt(   Field.numberOfFieldIndex[i] )  )=='X')     {
+                AI.XIndexes.add(Integer.toString(i));}
+            if (Field.defaultField.charAt(  Integer.parseInt(   Field.numberOfFieldIndex[i])  )=='O')     {
+                AI.OIndexes.add(Integer.toString(i));}
         }
 
         System.out.println("Wielkosc listy X,O :"+AI.XIndexes.size() + ", " + AI.OIndexes.size());
@@ -57,7 +56,7 @@ public class Game {
                 System.out.println("Pole jest zajete!");askForMove();
             } else {
                 System.out.println(Integer.toString(Selected));
-                System.out.println(AI.XIndexes.get(i));
+                System.out.println("X:"+i+AI.XIndexes.get(i));
                 System.out.println("Wolne "); Field.update(Selected,true);            }
 
         i++;
@@ -71,12 +70,13 @@ public class Game {
             else if (Integer.toString(Selected).contains(AI.OIndexes.get(i))) {
                 System.out.println("Pole jest zajete!");askForMove();
             } else {
-                System.out.println(Integer.toString(Selected));
-                System.out.println(AI.OIndexes.get(i));
+               // System.out.println(Integer.toString(Selected));
+                System.out.println("O:"+i+AI.OIndexes.get(i));
                 System.out.println("Wolne "); Field.update(Selected,true);            }
 
             i++;
         }while(i<AI.OIndexes.size());
+
     }
 
     static void checkForThreeInARow()
