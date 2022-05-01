@@ -1,3 +1,5 @@
+import jdk.swing.interop.SwingInterOpUtils;
+
 import java.util.Scanner;
 
 
@@ -6,7 +8,10 @@ public class Game {
     static Scanner scanner = new Scanner(System.in);
 
     static void start(){
+        Field.putNumberOfFieldIndexIntoList();
+
         System.out.println(Field.defaultField);
+
         askForMove();
         //random start
 
@@ -19,7 +24,6 @@ public class Game {
         System.out.println("Wpisz numer w który chcesz wstawić X: ");
         checkIfSelectedFieldIsEmpty(scanner.nextInt());
 
-
         checkForThreeInARow();
         AI.checkForCriticalPoint();
         System.out.println(Field.defaultField);
@@ -28,20 +32,51 @@ public class Game {
 
     private static void checkIfSelectedFieldIsEmpty(int Selected) {
 
+        AI.OIndexes.clear();
+        AI.XIndexes.clear();
 
-        for(int i=1;i<=AI.XIndexes.size();i++){
-
-            if (Integer.toString(Selected).contains(AI.XIndexes.get(i))) {
-                System.out.println("Pole jest zajete!");askForMove();
-            } else Field.update(Selected,true);
-        }
-        for(int i=1;i<=AI.OIndexes.size();i++){
-
-            if (Integer.toString(Selected).contains(AI.OIndexes.get(i))) {
-                System.out.println("Pole jest zajete!");askForMove();
-            } else Field.update(Selected,true);
+        for (int i=1;i<=9;i++)
+        {
+            if (Field.defaultField.charAt(  Integer.parseInt(   Field.numberOfFieldIndex[i] )   )=='X')     {
+                AI.XIndexes.add(Field.numberOfFieldIndex[i]);}
+            if (Field.defaultField.charAt(  Integer.parseInt(   Field.numberOfFieldIndex[i] )   )=='O')     {
+                AI.OIndexes.add(Field.numberOfFieldIndex[i]);}
         }
 
+        System.out.println("Wielkosc listy X,O :"+AI.XIndexes.size() + ", " + AI.OIndexes.size());
+        System.out.println("XIndexes:");
+        System.out.println(AI.XIndexes);
+        System.out.println("OIndexes:");
+        System.out.println(AI.OIndexes);
+
+        int i=0;
+        do{
+            if(AI.XIndexes.size()==0){System.out.println("Wolne "); Field.update(Selected,true);}
+
+            else if (Integer.toString(Selected).contains(AI.XIndexes.get(i))) {
+                System.out.println("Pole jest zajete!");askForMove();
+            } else {
+                System.out.println(Integer.toString(Selected));
+                System.out.println(AI.XIndexes.get(i));
+                System.out.println("Wolne "); Field.update(Selected,true);            }
+
+        i++;
+        }while(i<AI.XIndexes.size());
+
+
+        i=0;
+        do{
+            if(AI.OIndexes.size()==0){System.out.println("Wolne "); Field.update(Selected,true);}
+
+            else if (Integer.toString(Selected).contains(AI.OIndexes.get(i))) {
+                System.out.println("Pole jest zajete!");askForMove();
+            } else {
+                System.out.println(Integer.toString(Selected));
+                System.out.println(AI.OIndexes.get(i));
+                System.out.println("Wolne "); Field.update(Selected,true);            }
+
+            i++;
+        }while(i<AI.OIndexes.size());
     }
 
     static void checkForThreeInARow()
@@ -63,7 +98,6 @@ public class Game {
     }
 
     private static void checkForFreeSpace() {
-        String x ="X";
         int busyFields=0;
         for (int i=1;i<=9;i++)
         {

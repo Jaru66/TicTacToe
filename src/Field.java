@@ -8,6 +8,18 @@ public class Field {
     public static String[] numberOfFieldIndex = new String[10];
     static void update(int fieldNumber, boolean isX) {
         //String[] numberOfFieldIndex = new String[9];
+        putNumberOfFieldIndexIntoList();
+
+        String givenSign;
+        if (isX) {
+            givenSign = "X";
+        } else givenSign = "O";
+        String stringOfFieldNumber = Integer.toString(fieldNumber);
+        defaultField = defaultField.replace(stringOfFieldNumber,givenSign);
+
+    }
+
+    public static void putNumberOfFieldIndexIntoList() {
         numberOfFieldIndex[1] = "2";
         numberOfFieldIndex[2] = "8";
         numberOfFieldIndex[3] = "13";
@@ -17,14 +29,6 @@ public class Field {
         numberOfFieldIndex[7] = "60";
         numberOfFieldIndex[8] = "66";
         numberOfFieldIndex[9] = "71";
-
-        String givenSign;
-        if (isX) {
-            givenSign = "X";
-        } else givenSign = "O";
-        String stringOfFieldNumber = Integer.toString(fieldNumber);
-        defaultField = defaultField.replace(stringOfFieldNumber,givenSign);
-
     }
 }
 

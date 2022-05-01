@@ -4,14 +4,9 @@ public class AI {
     static ArrayList<String> XIndexes = new ArrayList<String>();
     static ArrayList<String> OIndexes = new ArrayList<String>();
     public static void checkForCriticalPoint(){
-        String whereXIsPlaced = "";
 
 
-        for (int i=1;i<=9;i++)
-        {
-            if (Field.defaultField.charAt(  Integer.parseInt(   Field.numberOfFieldIndex[i] )   )=='X')     {XIndexes.add(Field.numberOfFieldIndex[i]);}
-            if (Field.defaultField.charAt(  Integer.parseInt(   Field.numberOfFieldIndex[i] )   )=='O')     {OIndexes.add(Field.numberOfFieldIndex[i]);}
-        }
+
 
         int nextMove=1000;
              if(XIndexes.contains(Field.numberOfFieldIndex[1])&&XIndexes.contains(Field.numberOfFieldIndex[2])&&Field.defaultField.charAt(13)=='3'){nextMove=3;}
