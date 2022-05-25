@@ -55,11 +55,7 @@ public class AI {
             Game.checkForThreeInARow();
             Game.askForMove();
         }
-
-
                 //          IT WORKS \/
-
-
 
         if(XIndexes.contains("1")&&XIndexes.contains("2")&&Field.defaultField.charAt(13)=='3'){nextMove=3;}
         else if(XIndexes.contains("3")&&XIndexes.contains("2")&&Field.defaultField.charAt(2)=='1'){nextMove=1;}
@@ -85,6 +81,15 @@ public class AI {
         else if(XIndexes.contains("7")&&XIndexes.contains("5")&&Field.defaultField.charAt(13)=='3'){nextMove=3;}
         else if(XIndexes.contains("5")&&XIndexes.contains("3")&&Field.defaultField.charAt(60)=='7'){nextMove=7;}
         else if(XIndexes.contains("7")&&XIndexes.contains("3")&&Field.defaultField.charAt(37)=='5'){nextMove=5;}
+        else if(XIndexes.contains("1")&&XIndexes.contains("6")&&Field.defaultField.charAt(60)=='7'){nextMove=7;}
+        else if(XIndexes.contains("3")&&XIndexes.contains("4")&&Field.defaultField.charAt(60)=='7'){nextMove=7;}
+        else if(XIndexes.contains("5")&&XIndexes.contains("9")&&Field.defaultField.charAt(13)=='3'){nextMove=3;}
+        else if(XIndexes.contains("5")&&    XIndexes.contains("7")&&    Field.defaultField.charAt(2)=='1'){nextMove=1;}
+        else if(XIndexes.contains("7")&&    XIndexes.contains("6")&&    Field.defaultField.charAt(71)=='9'){nextMove=9;}
+        else if(XIndexes.contains("9")&&    XIndexes.contains("4")&&    Field.defaultField.charAt(60)=='7'){nextMove=7;}
+        //else if(XIndexes.contains("3")&&    XIndexes.contains("4")&&    Field.defaultField.charAt(60)=='7'){nextMove=7;}
+
+
         if (nextMove!=1000){
             Field.defaultField = Field.defaultField.replace(Integer.toString(nextMove),"O")   ;
             //System.out.println(Field.defaultField);

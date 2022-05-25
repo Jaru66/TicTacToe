@@ -28,7 +28,6 @@ public class Game {
         System.out.println(Field.defaultField);
 
     }
-
     private static void checkIfSelectedFieldIsEmpty(int Selected) {
 
 
@@ -71,7 +70,6 @@ public class Game {
         }while(i<AI.OIndexes.size());
 
     }
-
     public static void updateIndexes() {
         AI.OIndexes.clear();
         AI.XIndexes.clear();
@@ -85,9 +83,7 @@ public class Game {
                 AI.OIndexes.add(Integer.toString(i));}
         }
     }
-
-    static void checkForThreeInARow()
-    {
+    static void checkForThreeInARow()    {
 
         if (((Field.defaultField.charAt(2)=='X')&&Field.defaultField.charAt(8)=='X')&&Field.defaultField.charAt(13)=='X'){gameOver("X");}
         if (((Field.defaultField.charAt(31)=='X')&&Field.defaultField.charAt(37)=='X')&&Field.defaultField.charAt(42)=='X'){gameOver("X");}
@@ -114,7 +110,6 @@ public class Game {
 
         checkForFreeSpace();
     }
-
     private static void checkForFreeSpace() {
         int busyFields=0;
         for (int i=1;i<=9;i++)
@@ -128,7 +123,6 @@ public class Game {
 
         if(busyFields==9) { gameOver("Nikt nie");}
     }
-
     private static void gameOver(String winner) {
         System.out.println(winner +" wygrywa");
        // scanner.next();
